@@ -62,7 +62,7 @@ void _PCHAR(stack_t **obs, unsigned int count)
 		exit(EXIT_FAILURE);
 	}
 	n = (*obs)->n;
-	if (n >= 0 || n < 256)
+	if (n >= 0 || n < 128)
 		printf("%c\n", n);
 	else
 	{
@@ -83,8 +83,12 @@ void _PSTR(stack_t **obs, unsigned int count)
 {
 	stack_t *str;
 
-	if (*obs == NULL)
-		return;
+        if (*obs == NULL)
+        {
+                fprintf(stderr, "L%d: can't pchar, stack empty\n", count);
+                exit(EXIT_FAILURE);
+        }
+
 	(void)count;
 	str = *obs;
 	while (str)
@@ -100,7 +104,6 @@ void _PSTR(stack_t **obs, unsigned int count)
 		{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
                 exit(EXIT_FAILURE);
-
 		}
 		str = str->next;
 	}
