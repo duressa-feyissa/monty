@@ -162,7 +162,6 @@ void ROTR(stack_t **obs, unsigned int count)
 	while (head && head->next)
 		head = head->next;
 	ptr->n = head->n;
-	free(head);
 	head = *obs;
 	head->prev = ptr;
 	ptr->next = head;
