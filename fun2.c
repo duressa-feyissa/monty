@@ -140,7 +140,7 @@ void DIV(stack_t **obs, unsigned int count)
 
 	if (i < 2)
 	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", count);
+		fprintf(stderr, "L%d: can't div, stack too short\n", count);
 		if (*obs == NULL)
 			freeFun(obs);
 		exit(EXIT_FAILURE);
@@ -148,7 +148,7 @@ void DIV(stack_t **obs, unsigned int count)
 
 	if ((*obs)->n == 0)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", count);
+		fprintf(stderr, "L%d: division by zero\n", count);
 		if (*obs == NULL)
 			freeFun(obs);
 		exit(EXIT_FAILURE);
