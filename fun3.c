@@ -144,26 +144,20 @@ void ROT1(stack_t **obs, unsigned int count)
  */
 void ROTR(stack_t **obs, unsigned int count)
 {
-	stack_t *head, *ptr;
+	stack_t *head = NULL;
 
 	if (*obs == NULL)
 		return;
 	(void)count;
-	ptr = malloc(sizeof(stack_t));
-	if (ptr == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	ptr->n = 0;
-	ptr->prev = NULL;
-	ptr->next = NULL;
+	if ((*obs)->next == NULL)
+		return;
+
 	head = *obs;
-	while (head && head->next)
+	while (head->next)
 		head = head->next;
-	ptr->n = head->n;
-	head = *obs;
-	head->prev = ptr;
-	ptr->next = head;
-	*obs = ptr;
+	head->prev->next = NULL;
+	head->next = *obs;
+	head->prev = NULL;
+	(*obs)->prev = head;
+	*obs = head;
 }
