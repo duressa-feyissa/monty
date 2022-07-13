@@ -25,6 +25,7 @@ void readFun(char *filename, stack_t **obs)
 		count++;
 		parse(buf, obs, count);
 	}
+	fclose(file);
 }
 
 /**
