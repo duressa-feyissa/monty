@@ -39,14 +39,17 @@ void parse(char *str, stack_t **obs, unsigned int count)
 {
 	char *hold, *data;
 	(void)obs;
-
-	hold = strtok(str, " \n$");
+	(void)count;
+	if (str[0] == '\n')
+		str = "nop";
+	hold = strtok(str, "\t\r\n ");
 	if (strcmp(hold, "push") == 0)
 	{
 		data = strtok(NULL, " $\n");
 		glob.num = data;
 	}
 	hold = analysis(hold);
+	/*printf("%d %s = %lu\n", count, hold, strlen(hold));*/
 	findCommad(obs, hold, count);
 }
 
