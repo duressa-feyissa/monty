@@ -40,7 +40,7 @@ void parse(char *str, stack_t **obs, unsigned int count)
 	char *hold, *data;
 	(void)obs;
 
-	hold = strtok(str, " $\n");
+	hold = strtok(str, " \n$");
 	if (strcmp(hold, "push") == 0)
 	{
 		data = strtok(NULL, " $\n");
