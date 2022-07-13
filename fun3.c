@@ -84,9 +84,6 @@ void _PSTR(stack_t **obs, unsigned int count)
 {
 	stack_t *str;
 
-        if (*obs == NULL)
-		return;
-
 	(void)count;
 	str = *obs;
 	while (str && str->n > 0 && str->n < 128)
