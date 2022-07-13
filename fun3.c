@@ -91,20 +91,9 @@ void _PSTR(stack_t **obs, unsigned int count)
         }
 	(void)count;
 	str = *obs;
-	while (str)
+	while (str && str->n > 0 && str->n < 128)
 	{
-		if (str->n >= 0 && str->n < 256)
-		{
-			if (str->n != 0)
-				printf("%c", str->n);
-			else
-				break;
-		}
-		else
-		{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
-                exit(EXIT_FAILURE);
-		}
+		printf("%c", obs->n);
 		str = str->next;
 	}
 	printf("\n");
