@@ -15,7 +15,7 @@ void PUSH(stack_t **obs, unsigned int count)
 	if (strcmp(glob.num, "0") != 0)
 	{
 		value = atoi(glob.num);
-		if (value == 0 && glob.x == -1)
+		if (value == 0)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", count);
 			exit(EXIT_FAILURE);
