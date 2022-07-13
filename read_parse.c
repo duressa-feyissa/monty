@@ -16,7 +16,7 @@ void readFun(char *filename, stack_t **obs)
 	file = fopen(filename, "r");
 	if (file == NULL)
 	{
-		secondError(filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
@@ -49,7 +49,6 @@ void parse(char *str, stack_t **obs, unsigned int count)
 		glob.num = data;
 	}
 	hold = analysis(hold);
-	/*printf("%d %s = %lu\n", count, hold, strlen(hold));*/
 	findCommad(obs, hold, count);
 }
 
@@ -95,7 +94,8 @@ void findCommad(stack_t **obs, char *str, unsigned int count)
 		}
 		i++;
 	}
-	thirdError(count, str);
+	fprintf(stderr, "L%u: unknown instruction %s\n", count, str);
+	exit(EXIT_FAILURE);
 }
 
 /**

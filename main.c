@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	obs = NULL;
 	if (argc != 2)
 	{
-		firstError();
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	readFun(argv[1], &obs);
