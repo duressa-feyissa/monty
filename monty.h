@@ -54,7 +54,7 @@ typedef struct global
 } global_t;
 
 extern global_t glob;
-
+global_t glob;
 /** Read and Parse operator function **/
 void parse(char *str, stack_t **obs, unsigned int count);
 void readFun(char *filename, stack_t **obs);
