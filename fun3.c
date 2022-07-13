@@ -93,7 +93,7 @@ void _PSTR(stack_t **obs, unsigned int count)
 	str = *obs;
 	while (str && str->n > 0 && str->n < 128)
 	{
-		printf("%c", obs->n);
+		printf("%c", str->n);
 		str = str->next;
 	}
 	printf("\n");
