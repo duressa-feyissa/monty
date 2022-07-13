@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#include<ctype.h>
 /**
  * MOD - computes the rest of the division of the
  * second top element of the stack
@@ -62,10 +62,13 @@ void _PCHAR(stack_t **obs, unsigned int count)
 		exit(EXIT_FAILURE);
 	}
 	n = (*obs)->n;
-	if (n >= 0 && n < 256)
+	if (n >= 0 || n < 256)
 		printf("%c\n", n);
 	else
+	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -86,10 +89,19 @@ void _PSTR(stack_t **obs, unsigned int count)
 	str = *obs;
 	while (str)
 	{
-		if (str->n > 0 && str->n < 256)
-			printf("%c", str->n);
+		if (str->n >= 0 || str->n < 256)
+		{
+			if (str->n != 0)
+				printf("%c", str->n);
+			else
+				break;
+		}
 		else
-			break;
+		{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
+                exit(EXIT_FAILURE);
+
+		}
 		str = str->next;
 	}
 	printf("\n");
