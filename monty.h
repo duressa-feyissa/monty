@@ -50,6 +50,7 @@ typedef struct global
 	char *num;
 	int value;
 	int change;
+	int x;
 } global_t;
 
 extern global_t glob;

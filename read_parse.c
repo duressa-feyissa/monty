@@ -45,7 +45,9 @@ void parse(char *str, stack_t **obs, unsigned int count)
 	hold = strtok(str, "\t\r\n ");
 	if (strcmp(hold, "push") == 0)
 	{
-		data = strtok(NULL, " $\n");
+		data = strtok(NULL, "\t\r\n ");
+		if (data == NULL)
+			glob.x = -1;
 		glob.num = data;
 	}
 	hold = analysis(hold);
